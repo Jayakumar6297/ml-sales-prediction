@@ -35,7 +35,7 @@ steps:
     args:
       [
         'deploy', 'releases', 'create', 'release-$SHORT_SHA',
-        '--delivery-pipeline=ml-sales-prediction-pipeline',
+        '--delivery-pipeline=jk-ml-sales-prediction-pipeline',
         '--region=us-central1',
         '--images=jk-ml-sales-prediction=us-central1-docker.pkg.dev/$PROJECT_ID/jk-repo/jk-ml-sales-prediction:$SHORT_SHA'
       ]
