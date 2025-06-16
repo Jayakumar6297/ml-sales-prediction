@@ -6,4 +6,7 @@ spec:
   template:
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/$PROJECT_ID/jk-repo/jk-ml-sales-prediction
+      - image: us-central1-docker.pkg.dev/$PROJECT_ID/jk-repo/jk-ml-sales-prediction:$TAG
+        env:
+        - name: VERSION
+          value: "$TAG"
