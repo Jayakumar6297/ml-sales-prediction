@@ -29,18 +29,19 @@ steps:
       ]
     id: 'Deploy to Cloud Run'
 
+  # Create a Cloud Deploy release
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'gcloud'
     args:
-      - 'deploy'
-      - 'releases'
-      - 'create'
-      - 'release-$SHORT_SHA'
-      - '--delivery-pipeline=jk-ml-sales-prediction-pipeline'
-      - '--region=us-central1'
-      - '--images=jk-ml-sales-prediction=gcr.io/$PROJECT_ID/jk-ml-sales-prediction:$SHORT_SHA'
+      [
+        'deploy', 'releases', 'create', 'release-$SHORT_SHA',
+        '--delivery-pipeline=ml-sales-prediction-pipeline',
+        '--region=us-central1',
+        '--images=jk-ml-sales-prediction=us-central1-docker.pkg.dev/$PROJECT_ID/jk-repo/jk-ml-sales-prediction:$SHORT_SHA'
+      ]
+    id: 'Create Cloud Deploy Release'
 images:
-  - 'gcr.io/$PROJECT_ID/jk-ml-sales-prediction:$SHORT_SHA'      
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/jk-repo/jk-ml-sales-prediction:$SHORT_SHA'      
 
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
