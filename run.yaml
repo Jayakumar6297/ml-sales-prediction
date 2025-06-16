@@ -1,7 +1,7 @@
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: jk-canary-run-service
+  name: jk-cloud-run-app
 spec:
   template:
     spec:
