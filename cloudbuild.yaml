@@ -20,7 +20,7 @@ steps:
     entrypoint: 'gcloud'
     args:
       [
-        'run', 'deploy', 'jk-cloud-run-app',
+        'run', 'deploy', 'jk-ml-sales-cloud-run-app',
         '--image', 'us-central1-docker.pkg.dev/$PROJECT_ID/jk-repo/jk-ml-sales-prediction:$SHORT_SHA',
         '--region', 'us-central1',
         '--platform', 'managed',

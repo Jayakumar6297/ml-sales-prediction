@@ -1,7 +1,16 @@
-apiVersion: skaffold/v4beta7
+apiVersion: skaffold/v4beta6
 kind: Config
-manifests:
-  rawYaml:
-  - run.yaml
+metadata:
+  name: jk-ml-sales-prediction
+build:
+  artifacts:
+  - image: us-central1-docker.pkg.dev/$PROJECT_ID/jk-repo/jk-ml-sales-prediction
+    context: .
+    docker:
+      dockerfile: dockerfile
 deploy:
-  cloudrun: {}
+  cloudrun:
+    projectid: $PROJECT_ID
+    region: us-central1
+    manifests:
+    - run.yaml

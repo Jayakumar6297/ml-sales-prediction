@@ -1,9 +1,12 @@
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: jk-cloud-run-app
+  name: jk-ml-sales-cloud-run-app
 spec:
   template:
     spec:
       containers:
-      - image: us-central1-docker.pkg.dev/$PROJECT_ID/jk-repo/jk-ml-sales-prediction:$SHORT_SHA
+      - image: us-central1-docker.pkg.dev/$PROJECT_ID/jk-repo/jk-ml-sales-prediction:$TAG
+        env:
+        - name: VERSION
+          value: "$TAG"
